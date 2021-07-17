@@ -39,6 +39,7 @@ npm install sol-merger -g
 ### Prepare `PancakeFactory` and `PancakeRouter01`
 ```
 sol-merger pancake-swap-core/contracts/PancakeFactory.sol ./build
+sol-merger pancake-swap-core/contracts/PancakePair.sol ./build
 sol-merger pancake-swap-periphery/contracts/PancakeRouter01.sol ./build
 ```
 
