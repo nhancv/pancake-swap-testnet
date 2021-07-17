@@ -127,3 +127,4 @@ yarn build
 - DAI Token:  0x3Cf204795c4995cCf9C1a0B3191F00c01B03C56C
 - CAKE Token: 0xB8F5B50ed77596b5E638359d828000747bb3dd89
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad50d7dc-f87f-4ddd-a287-255d8dc3b779/deploy-status)](https://app.netlify.com/sites/pcs1/deploys)
