@@ -122,7 +122,7 @@ yarn build
 - FACTORY address: 0x5Fe5cC0122403f06abE2A75DBba1860Edb762985
 - INIT_CODE_HASH: 0xbb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
 - ROUTER address: 0x3E2b14680108E8C5C45C3ab5Bc04E01397af14cB
-- Frontend address: https://pcs1.netlify.app 
+- Frontend address: https://pcs.nhancv.com 
 
 **Tokens**
 
