@@ -39,6 +39,7 @@ npm install sol-merger -g
 ### Prepare `PancakeFactory` and `PancakeRouter01`
 ```
 sol-merger pancake-swap-core/contracts/PancakeFactory.sol ./build
+sol-merger pancake-swap-core/contracts/PancakePair.sol ./build
 sol-merger pancake-swap-periphery/contracts/PancakeRouter01.sol ./build
 ```
 
@@ -74,27 +75,33 @@ cd pancake-swap-interface-v1
 cp .env.development .env
 ```
 
-- Update new `ROUTER_ADDRESS` to `src/constants/index.ts`
-
+- Update `ROUTER_ADDRESS` at `src/constants/index.ts`
+  
 - Update support chain to testnet: `src/connectors/index.ts`
+	+ Change from `supportedChainIds: [56, 97]` to `supportedChainIds: [97]`
+	+ Change from `56` to `97`
 
-```
-Change: 
-export const bscConnector = new BscConnector({ supportedChainIds: [56] })
+- Update `FACTORY_ADDRESS` and `INIT_CODE_HASH` at `node_modules/@pancakeswap-libs/sdk/dist/constants.d.ts`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
-To:
-export const bscConnector = new BscConnector({ supportedChainIds: [97] })
+- Update `v2 factory` to FACTORY_ADDRESS and `v2 router 01` and `v2 router 02 = v2 router 01` to ROUTER_ADDRESS at `src/state/swap/hooks.ts`
 
-```
+- Update `WBNB` address at `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
-- Update `FACTORY_ADDRESS` và `INIT_CODE_HASH` at  `node_modules/@pancakeswap-libs/sdk/dist/constants.d.ts`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js`
-
-- Update `WBNB` address at `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js`
-
-- Custom your own tokens
+- VERIFY CHANGES by Find All old addresses:
+	+ WBNB:           0xaE8E19eFB41e7b96815649A6a60785e1fbA84C1e
+	+ Factory:        0xBCfCcbde45cE874adCB698cC183deBcF17952812
+	+ INIT_CODE_HASH: 0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66
+	+ Router01:       0xf164fC0Ec4E93095b804a4795bBe1e041497b92a
+	+ Router02:       0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F
+	
+- Deploy your own tokens
 	+ Deploy your own tokens and update info (token address + chainId to 97) to `src/constants/token/pancakeswap.json`
 	+ Remember update token icon with name as token address in lowercase mode to `public/images/coins`
-
+	+ Update support network from `ChainId.MAINNET` to `ChainId.BSCTESTNET` at `src/constants/index.ts`
+	+ Update coin addresses to your at `src/constants/index.ts`
+	+ Update `src/components/Menu/index.tsx`: From `priceData.data[CAKE.address].price` to `priceData.data[CAKE.address]?.price ?? 0`
+	+ Update `src/hooks/useGetDocumentTitlePrice.ts`: From `priceData.data[CAKE.address].price` to `priceData.data[CAKE.address]?.price ?? 0`
+	
 - Custom menu at `src/components/Menu/config.ts`
 
 ### Start and Build Frontend
