@@ -41,6 +41,7 @@ npm install sol-merger -g
 sol-merger pancake-swap-core/contracts/PancakeFactory.sol ./build
 sol-merger pancake-swap-core/contracts/PancakePair.sol ./build
 sol-merger pancake-swap-periphery/contracts/PancakeRouter01.sol ./build
+sol-merger pancake-swap-periphery/contracts/PancakeRouter.sol ./build
 ```
 
 ### Deploy `PancakeFactory` and `PancakeRouter01`
@@ -63,9 +64,18 @@ sol-merger pancake-swap-periphery/contracts/PancakeRouter01.sol ./build
 
 + New File: PancakeRouter01.sol => Copy source from ./build/PancakeRouter01.sol
 + Expand PancakeFactory deployed above -> Read INIT_CODE_PAIR_HASH -> Copy this hash without prefix `0x`. Ex: bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
-+ Edit PancakeRouter01: Find PancakeLibrary -> pairFor function => Replace new hex by INIT_CODE_PAIR_HASH above. Ex: `hex'bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539'` -> hex'bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539'
++ Edit PancakeRouter01: Find PancakeLibrary -> pairFor function => Replace new hex by INIT_CODE_PAIR_HASH above. Ex: `hex'd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66'` -> hex'bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539'
 + Compiler tab => Select compiler: v0.6.6+commit.6c089d02
 + Deploy tab => Select PancakeRouter01 -> Fill PancakeFactory address and WBNB address as constructor params -> Deploy
+
+#### Deploy PancakeRouter02
+
++ New File: PancakeRouter.sol => Copy source from ./build/PancakeRouter.sol
++ Expand PancakeFactory deployed above -> Read INIT_CODE_PAIR_HASH -> Copy this hash without prefix `0x`. Ex: bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
++ Edit PancakeRouter: Find PancakeLibrary -> pairFor function => Replace new hex by INIT_CODE_PAIR_HASH above. Ex: `hex'd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66'` -> hex'bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539'
++ Compiler tab => Select compiler: v0.6.6+commit.6c089d02; Check on `Enable optimization: 200` to avoid `Contract code size limit` issue
++ Deploy tab => Select PancakeRouter -> Fill PancakeFactory address and WBNB address as constructor params -> Deploy
+
 
 #### Setup Frontend
 
@@ -83,11 +93,11 @@ cp .env.development .env
 
 - Update `FACTORY_ADDRESS` and `INIT_CODE_HASH` at `node_modules/@pancakeswap-libs/sdk/dist/constants.d.ts`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
-- Update `v2 factory` to FACTORY_ADDRESS and `v2 router 01` and `v2 router 02 = v2 router 01` to ROUTER_ADDRESS at `src/state/swap/hooks.ts`
+- Update `v2 factory` to FACTORY_ADDRESS and `v2 router 01` and `v2 router 02` to ROUTER_ADDRESS at `src/state/swap/hooks.ts`
 
 - Update `WBNB` address at `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
-- VERIFY CHANGES by Find All old addresses:
+- VERIFY CHANGES by `Find All` old addresses and replace new one:
 	+ WBNB:           0xaE8E19eFB41e7b96815649A6a60785e1fbA84C1e
 	+ Factory:        0xBCfCcbde45cE874adCB698cC183deBcF17952812
 	+ INIT_CODE_HASH: 0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66
@@ -121,7 +131,8 @@ yarn build
 - WBNB address: 0x0dE8FCAE8421fc79B29adE9ffF97854a424Cad09
 - FACTORY address: 0x5Fe5cC0122403f06abE2A75DBba1860Edb762985
 - INIT_CODE_HASH: 0xbb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
-- ROUTER address: 0x3E2b14680108E8C5C45C3ab5Bc04E01397af14cB
+- ROUTER01 address: 0x3E2b14680108E8C5C45C3ab5Bc04E01397af14cB
+- ROUTER02 address: 0xCc7aDc94F3D80127849D2b41b6439b7CF1eB4Ae0
 - Frontend address: https://pcs.nhancv.com 
 
 **Tokens**

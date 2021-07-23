@@ -1,6 +1,7 @@
 {
   "name": "@pancakeswap/interface",
   "description": "Pancakeswap Interface",
+  "version": "1.0.1",
   "homepage": ".",
   "private": true,
   "dependencies": {
