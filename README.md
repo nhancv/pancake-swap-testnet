@@ -36,7 +36,7 @@ yarn install
 npm install sol-merger -g
 ```
 
-### Prepare `PancakeFactory` and `PancakeRouter01`
+### Prepare `PancakeFactory` and `PancakeRouter`
 ```
 sol-merger pancake-swap-core/contracts/PancakeFactory.sol ./build
 sol-merger pancake-swap-core/contracts/PancakePair.sol ./build
@@ -44,7 +44,7 @@ sol-merger pancake-swap-periphery/contracts/PancakeRouter01.sol ./build
 sol-merger pancake-swap-periphery/contracts/PancakeRouter.sol ./build
 ```
 
-### Deploy `PancakeFactory` and `PancakeRouter01`
+### Deploy `PancakeFactory` and `PancakeRouter`
 
 - Access: https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.5.16+commit.9c3226ce.js
 
@@ -54,7 +54,7 @@ sol-merger pancake-swap-periphery/contracts/PancakeRouter.sol ./build
 + Compiler tab => Select compiler: v0.8.3+commit.8d00100c
 + Deploy tab => Select WBNB -> Deploy
 
-#### Deploy PancakeRouter
+#### Deploy PancakeFactory
 
 + New File: PancakeFactory.sol => Copy source from ./build/PancakeFactory.sol
 + Compiler tab => Select compiler: v0.5.16+commit.9c3226ce
@@ -68,7 +68,7 @@ sol-merger pancake-swap-periphery/contracts/PancakeRouter.sol ./build
 + Compiler tab => Select compiler: v0.6.6+commit.6c089d02
 + Deploy tab => Select PancakeRouter01 -> Fill PancakeFactory address and WBNB address as constructor params -> Deploy
 
-#### Deploy PancakeRouter02
+#### Deploy PancakeRouter (Main Router)
 
 + New File: PancakeRouter.sol => Copy source from ./build/PancakeRouter.sol
 + Expand PancakeFactory deployed above -> Read INIT_CODE_PAIR_HASH -> Copy this hash without prefix `0x`. Ex: bb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
@@ -85,24 +85,24 @@ cd pancake-swap-interface-v1
 cp .env.development .env
 ```
 
-- Update `ROUTER_ADDRESS` at `src/constants/index.ts`
+- Update `PancakeRouter` address to `ROUTER_ADDRESS` at `src/constants/index.ts`
   
 - Update support chain to testnet: `src/connectors/index.ts`
 	+ Change from `supportedChainIds: [56, 97]` to `supportedChainIds: [97]`
 	+ Change from `56` to `97`
 
-- Update `FACTORY_ADDRESS` and `INIT_CODE_HASH` at `node_modules/@pancakeswap-libs/sdk/dist/constants.d.ts`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
+- Update `PancakeFactory` address and code hash to `FACTORY_ADDRESS` and `INIT_CODE_HASH` at `node_modules/@pancakeswap-libs/sdk/dist/constants.d.ts`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js` and `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
-- Update `v2 factory` to FACTORY_ADDRESS and `v2 router 01` and `v2 router 02` to ROUTER_ADDRESS at `src/state/swap/hooks.ts`
+- Update `PancakeFactory` address to `v2 factory`; `PancakeRouter01` address to `v2 router 01` and `PancakeRouter` address to `v2 router 02` at `src/state/swap/hooks.ts`
 
 - Update `WBNB` address at `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.development.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.cjs.production.min.js`, `node_modules/@pancakeswap-libs/sdk/dist/sdk.esm.js`
 
 - VERIFY CHANGES by `Find All` old addresses and replace new one:
-	+ WBNB:           0xaE8E19eFB41e7b96815649A6a60785e1fbA84C1e
-	+ Factory:        0xBCfCcbde45cE874adCB698cC183deBcF17952812
-	+ INIT_CODE_HASH: 0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66
-	+ Router01:       0xf164fC0Ec4E93095b804a4795bBe1e041497b92a
-	+ Router02:       0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F
+	+ WBNB:            0xaE8E19eFB41e7b96815649A6a60785e1fbA84C1e
+	+ PancakeFactory:  0xBCfCcbde45cE874adCB698cC183deBcF17952812
+	+ INIT_CODE_HASH:  0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66
+	+ PancakeRouter01: 0xf164fC0Ec4E93095b804a4795bBe1e041497b92a
+	+ PancakeRouter:   0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F
 	
 - Deploy your own tokens
 	+ Deploy your own tokens and update info (token address + chainId to 97) to `src/constants/token/pancakeswap.json`
@@ -128,12 +128,12 @@ yarn build
 
 ### Deployment
 
-- WBNB address: 0x0dE8FCAE8421fc79B29adE9ffF97854a424Cad09
-- FACTORY address: 0x5Fe5cC0122403f06abE2A75DBba1860Edb762985
-- INIT_CODE_HASH: 0xbb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
-- ROUTER01 address: 0x3E2b14680108E8C5C45C3ab5Bc04E01397af14cB
-- ROUTER02 address: 0xCc7aDc94F3D80127849D2b41b6439b7CF1eB4Ae0
-- Frontend address: https://pcs.nhancv.com 
+- WBNB:            0x0dE8FCAE8421fc79B29adE9ffF97854a424Cad09
+- PancakeFactory:  0x5Fe5cC0122403f06abE2A75DBba1860Edb762985
+- INIT_CODE_HASH:  0xbb600ba95884f2c2837114fd2f157d00137e0b65b0fe5226523d720e4a4ce539
+- PancakeRouter01: 0x3E2b14680108E8C5C45C3ab5Bc04E01397af14cB
+- PancakeRouter:   0xCc7aDc94F3D80127849D2b41b6439b7CF1eB4Ae0
+- Frontend:        https://pcs.nhancv.com 
 
 **Tokens**
 
