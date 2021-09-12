@@ -2,7 +2,7 @@
   ignore = "1"
   base = "pancake-swap-interface-v1"
   publish = "pancake-swap-interface-v1/build"
-  command =
+  command = ""
 
 [build.environment]
   REACT_APP_CHAIN_ID = "97"
