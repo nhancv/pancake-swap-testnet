@@ -1,7 +1,7 @@
 [build]
-  ignore = "1"
+  ignore = "echo 1"
   base = "pancake-swap-interface-v1"
-  publish = "pancake-swap-interface-v1/build"
+  publish = "build"
   command = ""
 
 [build.environment]
