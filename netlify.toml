@@ -1,5 +1,5 @@
 [build]
-  ignore = "echo 1"
+  ignore = "exit 1"
   base = "pancake-swap-interface-v1"
   publish = "build"
   command = ""
