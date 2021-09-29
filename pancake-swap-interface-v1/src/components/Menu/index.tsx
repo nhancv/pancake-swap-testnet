@@ -8,7 +8,6 @@ import useGetPriceData from 'hooks/useGetPriceData'
 import useGetLocalProfile from 'hooks/useGetLocalProfile'
 import useAuth from 'hooks/useAuth'
 import links from './config'
-import { CAKE } from '../../constants'
 
 const Menu: React.FC = (props) => {
   const { account } = useWeb3React()
@@ -18,7 +17,7 @@ const Menu: React.FC = (props) => {
   const priceData = useGetPriceData()
   let cakePriceUsd = 0;
   try {
-    cakePriceUsd = priceData ? Number(priceData.data[CAKE.address].price ?? 0) : 0
+    cakePriceUsd = priceData ? Number(priceData.data['0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'].price ?? 0) : 0
   } catch (e) {
     // Ignore
   }

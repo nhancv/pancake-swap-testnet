@@ -9,7 +9,7 @@ const config: MenuEntry[] = [
   {
     label: 'Trade',
     icon: 'TradeIcon',
-    initialOpenState: true,
+    initialOpenState: false,
     items: [
       {
         label: 'Exchange',
