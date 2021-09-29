@@ -28,7 +28,7 @@ export const getTranslation = (translations: Array<any>, translationId: number, 
 
 export const TranslateString = (translationId: number, fallback: string) => {
   const { translations } = useContext(TranslationsContext)
-  if (translations[0] === 'error') {
+  if (translations[0] === 'error' || translations.length === 0) {
     return fallback
   }
   if (translations.length > 0) {
