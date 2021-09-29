@@ -16,6 +16,7 @@ if (typeof NETWORK_URL === 'undefined') {
 
 export const network = new NetworkConnector({
   urls: { [NETWORK_CHAIN_ID]: NETWORK_URL },
+  defaultChainId: NETWORK_CHAIN_ID
 })
 
 let networkLibrary: Web3Provider | undefined
