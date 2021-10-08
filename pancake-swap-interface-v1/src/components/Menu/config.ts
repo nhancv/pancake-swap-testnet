@@ -9,7 +9,7 @@ const config: MenuEntry[] = [
   {
     label: 'Trade',
     icon: 'TradeIcon',
-    initialOpenState: false,
+    initialOpenState: true,
     items: [
       {
         label: 'Exchange',
@@ -18,6 +18,10 @@ const config: MenuEntry[] = [
       {
         label: 'Liquidity',
         href: '/pool',
+      },
+      {
+        label: 'Chart',
+        href: 'https://dex.nhancv.com',
       },
     ],
   },
