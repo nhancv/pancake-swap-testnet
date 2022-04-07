@@ -23,6 +23,10 @@ const config: MenuEntry[] = [
         label: 'Chart',
         href: 'https://dex.nhancv.com/0xE0dFffc2E01A7f051069649aD4eb3F518430B6a4',
       },
+      {
+        label: 'DApp',
+        href: 'https://dapp.nhancv.com',
+      },
     ],
   },
 ]
