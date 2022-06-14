@@ -12,7 +12,7 @@ type ApiResponse = {
   }
 }
 
-const api = 'https://api.pancakeswap.info/api/tokens'
+const api = 'https://api.pancakeswap.info/api/v2/tokens'
 
 const useGetPriceData = () => {
   const [data, setData] = useState<ApiResponse | null>(null)
