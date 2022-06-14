@@ -24,7 +24,7 @@ const config: MenuEntry[] = [
         href: 'https://dapp.nhancv.com',
       },
       {
-        label: 'Lucky',
+        label: 'Lucky Money',
         href: 'https://dapp.nhancv.com/lucky',
       },
     ],
