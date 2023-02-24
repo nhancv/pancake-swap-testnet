@@ -144,3 +144,18 @@ yarn build
 - XRP Token:  0x3833B175Af1900b457cf83B839727AF6C9cF0bEe
 - DAI Token:  0x3Cf204795c4995cCf9C1a0B3191F00c01B03C56C
 - CAKE Token: 0xB8F5B50ed77596b5E638359d828000747bb3dd89
+
+--------
+
+## Arbitrum Goerli Pancakeswap
+- Repo: https://github.com/nhancv/pancake-swap-arbitrum-goerli
+- Web: https://pcs-arb.nhancv.com
+- Addresses
+```
+- WBNB:            0xD8bbeA7e504851b0aa1c37475E7601c590cFa0B4
+- PancakeFactory:  0x259E9786BB40eb5F656dbc16e15538a2340c2554
+- INIT_CODE_HASH:  0x9fe1b508f2b0a84ca3b07189bfa32dd3309fb04b5ddec5e0456a232004b07194
+- PancakeRouter01: 0x706B5c92d9E7fFD2dd50e56A69906C287C6C5550
+- PancakeRouter:   0x8b707e7578059aD857f228FA63E82AA80E132b97
+- Multicall:       0xb4B23070BE725100435457CE2E887aB716575EB2
+```

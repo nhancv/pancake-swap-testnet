@@ -20,6 +20,10 @@ const config: MenuEntry[] = [
         href: '/pool',
       },
       {
+        label: 'Arbitrum Goerli',
+        href: 'https://pcs-arb.nhancv.com',
+      },
+      {
         label: 'DApp',
         href: 'https://dapp.nhancv.com',
       },
