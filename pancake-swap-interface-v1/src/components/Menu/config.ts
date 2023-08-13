@@ -20,16 +20,12 @@ const config: MenuEntry[] = [
         href: '/pool',
       },
       {
-        label: 'Arbitrum Goerli',
-        href: 'https://pcs-arb.nhancv.com',
+        label: 'Testnet NSwap',
+        href: 'https://nswap.nhancv.com',
       },
       {
         label: 'DApp',
         href: 'https://dapp.nhancv.com',
-      },
-      {
-        label: 'Lucky Money',
-        href: 'https://dapp.nhancv.com/lucky',
       },
     ],
   },
